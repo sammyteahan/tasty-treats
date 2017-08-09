@@ -120,8 +120,8 @@ TEMPLATES = [{
         'string_if_invalid': '<< MISSING VARIABLE "%s" >>' if DEBUG else ''}}]
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.environ.get('SECRET_KEY')
-# SECRET_KEY = 't0cjh@*q6$out&6xb#hsp(xu#gbiko(9$73)1q_b&6!)pg5*n0'
+# SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 't0cjh@*q6$out&6xb#hsp(xu#gbiko(9$73)1q_b&6!)pg5*n0'
 
 MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -284,15 +284,17 @@ BOOTSTRAP3 = {
 
 TEST_RUNNER = ''
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split()
+# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split()
+ALLOWED_HOSTS = ['localhost', 'kiai-shop.herokuapp.com']
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Amazon S3 configuration
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-AWS_MEDIA_BUCKET_NAME = os.environ.get('AWS_MEDIA_BUCKET_NAME')
+# credz for user kiai
+AWS_ACCESS_KEY_ID = 'AKIAJHIEFGTSB5ZCFFVA'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'kiai-shop'
+AWS_MEDIA_BUCKET_NAME = 'kiai-shop'
 AWS_QUERYSTRING_AUTH = ast.literal_eval(
     os.environ.get('AWS_QUERYSTRING_AUTH', 'False'))
 
