@@ -290,11 +290,10 @@ ALLOWED_HOSTS = ['localhost', 'kiai-shop.herokuapp.com']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Amazon S3 configuration
-# credz for user kiai
-AWS_ACCESS_KEY_ID = 'AKIAJHIEFGTSB5ZCFFVA'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'kiai-shop'
-AWS_MEDIA_BUCKET_NAME = 'kiai-shop'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_MEDIA_BUCKET_NAME = os.environ.get('AWS_MEDIA_BUCKET_NAME')
 AWS_QUERYSTRING_AUTH = ast.literal_eval(
     os.environ.get('AWS_QUERYSTRING_AUTH', 'False'))
 
