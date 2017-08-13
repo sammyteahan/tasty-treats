@@ -285,7 +285,7 @@ BOOTSTRAP3 = {
 TEST_RUNNER = ''
 
 # ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split()
-ALLOWED_HOSTS = ['localhost', 'kiai-shop.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'kiai-shop.herokuapp.com',]
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
