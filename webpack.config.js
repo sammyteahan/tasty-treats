@@ -14,8 +14,8 @@ var output;
 if (process.env.NODE_ENV === 'production') {
   output = {
     path: resolve('saleor/static/assets/'),
-    filename: '[name].[chunkhash].js',
-    publicPath: 'https://saleor-demo.s3.amazonaws.com/assets/'
+    filename: '[name].[chunkhash].js'
+    // publicPath: 'https://saleor-demo.s3.amazonaws.com/assets/' // @todo fixme
   };
   fileLoaderPath = 'file?name=[name].[hash].[ext]';
   extractTextPlugin = new ExtractTextPlugin('[name].[contenthash].css');
@@ -57,7 +57,7 @@ var providePlugin = new webpack.ProvidePlugin({
 var faviconsWebpackPlugin = new FaviconsWebpackPlugin({
   logo: './saleor/static/images/favicon.svg',
   prefix: 'favicons/',
-  title: "Saleor"
+  title: 'Saleor'
 });
 
 var config = {
