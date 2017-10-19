@@ -1,0 +1,34 @@
+# Below is all I needed to start local development.
+# Going to comment out and try to go live
+# run.config:
+#   engine: python
+#
+# data.db:
+#   image: nanobox/postgresql:9.5
+
+# Production settings on digital ocean with django, nginx, and postgresql
+run.config:
+  engine: python
+  extra_packages:
+    - nginx
+
+data.db:
+  image: nanobox/postgresql:9.5
+
+# add a web component and give it a "start" command
+web.main:
+  start:
+    nginx: nginx -c /app/etc/nginx.conf
+    django: gunicorn -c /app/etc/gunicorn.py saleor.wsgi
+
+deploy.config:
+  # collect static assets during deploy
+  extra_steps:
+    - python manage.py collectstatic --noinput --clear
+
+# this is a deploy hook.
+# run migrate each time we deploy
+deploy.config:
+  before_live:
+    web.main:
+      - python manage.py migrate --fake-initial

@@ -32,11 +32,22 @@ if os.environ.get('REDIS_URL'):
         'BACKEND': 'django_redis.cache.RedisCache',
         'LOCATION': os.environ.get('REDIS_URL')}
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://saleor:saleor@localhost:5432/saleor',
-        conn_max_age=600)}
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default='postgres://saleor:saleor@localhost:5432/saleor',
+#         conn_max_age=600)}
 
+# for nanobox ease of use right now
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'gonano', # where is this set and can I configure it?
+        'USER': os.environ.get('DATA_DB_USER'),
+        'PASSWORD': os.environ.get('DATA_DB_PASS'),
+        'HOST': os.environ.get('DATA_DB_HOST'),
+        'PORT': '',
+    }
+}
 
 TIME_ZONE = 'America/Chicago'
 LANGUAGE_CODE = 'en-us'
@@ -285,7 +296,13 @@ BOOTSTRAP3 = {
 TEST_RUNNER = ''
 
 # ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split()
-ALLOWED_HOSTS = ['localhost', 'kiai-shop.herokuapp.com',]
+ALLOWED_HOSTS = [
+    'localhost',
+    'django.dev',
+    'django.preview', # preview production environment
+    '172.21.0.5', # added this for django.preview as well
+    'kiai-shop.nanoapp.io',
+]
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -404,4 +421,3 @@ SOCIAL_AUTH_USER_MODEL = AUTH_USER_MODEL
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields': 'id, email'}
-
