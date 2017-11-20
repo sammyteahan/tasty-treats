@@ -20,6 +20,8 @@ web.main:
   start:
     nginx: nginx -c /app/etc/nginx.conf
     django: gunicorn -c /app/etc/gunicorn.py saleor.wsgi
+  writable_dirs:
+    - media
 
 deploy.config:
   # collect static assets during deploy
